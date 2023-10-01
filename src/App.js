@@ -1,24 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import TextInput from './Components/TextInput';
+import TextOutput from './Components/TextOutput';
+import { useState } from 'react';
 
 function App() {
+
+  const [text, setText] = useState();
+
+  const textToTranslate = (text) => {
+    console.log("textToTranslate");
+    setText(text);
+    console.log(text);
+    translateText(text);
+  }
+
+  function translateText(text) {
+    let oldStr = [...text];
+    let prevCase = "";
+    let newStrArr = [];
+    let finalStr = "";
+    
+    for(let i = 0; i < oldStr.length; i++) {
+        if(text[i].toLowerCase() !== text[i].toUpperCase()) {
+            if(prevCase === "upper" || prevCase === "") {
+                newStrArr.push(oldStr[i].toLowerCase());
+                prevCase = "lower";
+            } else {
+                newStrArr.push(oldStr[i].toUpperCase());
+                prevCase = "upper";
+            }
+        } else {
+            newStrArr.push(oldStr[i]);
+        }
+    }
+    
+    finalStr = newStrArr.join("");
+
+    setText(finalStr);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TextInput text={text} textToTranslate={textToTranslate} />
+
+      <TextOutput text={text} />
+    </>
   );
 }
 
