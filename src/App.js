@@ -8,12 +8,11 @@ function App() {
   const [text, setText] = useState();
 
   const textToTranslate = (text) => {
-    console.log("textToTranslate");
     setText(text);
-    console.log(text);
     translateText(text);
+    navigator.clipboard.writeText(text);
   }
-
+  
   function translateText(text) {
     let oldStr = [...text];
     let prevCase = "";
@@ -40,11 +39,11 @@ function App() {
   }
 
   return (
-    <>
+    <div className="app">
       <TextInput text={text} textToTranslate={textToTranslate} />
 
       <TextOutput text={text} />
-    </>
+    </ div>
   );
 }
 

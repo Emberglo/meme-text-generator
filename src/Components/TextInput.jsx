@@ -10,9 +10,9 @@ const TextInput = ({text, textToTranslate}) => {
 
     return (
         <>
-            <form onSubmit={(e) => {e.preventDefault(); textToTranslate(input)}}>
-                <textarea rows="4" cols="50" name="userInput" onChange={handleChange}></textarea>
-                <button>Translate</button>
+            <form onSubmit={(e) => {e.preventDefault(); textToTranslate(input)}} className="form">
+                <textarea className="text-input-box" name="userInput" onChange={handleChange}></textarea>
+                <button className="translate-button">Translate</button>
             </form>
         </>
     )

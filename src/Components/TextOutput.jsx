@@ -1,7 +1,7 @@
 const TextOutput = ({text}) => {
   return (
     <>
-      <div>{text}</div>
+      <div className="text-output">{text}</div>
     </>
   )
 }
