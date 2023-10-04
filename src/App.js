@@ -1,4 +1,5 @@
 import './App.css';
+import Header from './Components/Header';
 import TextInput from './Components/TextInput';
 import TextOutput from './Components/TextOutput';
 import { useState } from 'react';
@@ -12,7 +13,7 @@ function App() {
     translateText(text);
     navigator.clipboard.writeText(text);
   }
-  
+
   function translateText(text) {
     let oldStr = [...text];
     let prevCase = "";
@@ -40,7 +41,9 @@ function App() {
 
   return (
     <div className="app">
-      <TextInput text={text} textToTranslate={textToTranslate} />
+      <Header />
+
+      <TextInput textToTranslate={textToTranslate} />
 
       <TextOutput text={text} />
     </ div>
